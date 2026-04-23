@@ -2,3 +2,7 @@ __pycache__/
 *.pyc
 .pytest_cache/
 db/lighthouse.db
+.vscode/
+.venv/
+brief.txt
+plan.txt
