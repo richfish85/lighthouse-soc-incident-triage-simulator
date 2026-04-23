@@ -1,0 +1,17 @@
+flowchart TD
+    Login[Login / Role Gateway]
+    Submit[Reporter / Submit Alert]
+    MyAlerts[Reporter / My Alerts]
+    Queue[Analyst / Queue]
+    Investigation[Analyst / Investigation]
+    Playbooks[Analyst / Playbooks]
+    Dashboard[Admin / Dashboard]
+    Oversight[Admin / Incident Oversight]
+
+    Login --> Submit
+    Login --> Queue
+    Login --> Dashboard
+    Submit --> MyAlerts
+    Queue --> Investigation
+    Investigation --> Playbooks
+    Dashboard --> Oversight

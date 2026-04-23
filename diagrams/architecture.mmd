@@ -1,0 +1,15 @@
+flowchart LR
+    Reporter[Reporter UI]
+    Analyst[Analyst UI]
+    Admin[Admin UI]
+    Streamlit[Streamlit App]
+    Services[Service Layer]
+    SQLite[(SQLite Database)]
+    SampleData[(JSON Sample Data)]
+
+    Reporter --> Streamlit
+    Analyst --> Streamlit
+    Admin --> Streamlit
+    Streamlit --> Services
+    Services --> SQLite
+    Services --> SampleData

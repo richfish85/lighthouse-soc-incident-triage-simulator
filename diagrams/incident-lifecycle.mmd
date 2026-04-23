@@ -1,0 +1,10 @@
+stateDiagram-v2
+    [*] --> New
+    New --> InReview: Analyst opens incident
+    InReview --> Escalated: Needs deeper review
+    InReview --> Contained: Immediate action taken
+    InReview --> Closed: Benign or resolved
+    InReview --> FalsePositive: Approved activity
+    Escalated --> Contained: Response action
+    Escalated --> Closed: Resolution confirmed
+    Contained --> Closed: Recovery complete

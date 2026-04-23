@@ -1,0 +1,33 @@
+flowchart TD
+    Reporter[Reporter]
+    Analyst[Analyst]
+    Admin[Admin]
+
+    Submit[Submit Alert]
+    Own[View Own Alerts]
+    Queue[View Incident Queue]
+    Update[Update Incident Status]
+    Notes[Add Analyst Notes]
+    Escalate[Escalate Incidents]
+    Metrics[View Metrics]
+    Manage[Manage Settings]
+
+    Reporter --> Submit
+    Reporter --> Own
+
+    Analyst --> Submit
+    Analyst --> Own
+    Analyst --> Queue
+    Analyst --> Update
+    Analyst --> Notes
+    Analyst --> Escalate
+    Analyst --> Metrics
+
+    Admin --> Submit
+    Admin --> Own
+    Admin --> Queue
+    Admin --> Update
+    Admin --> Notes
+    Admin --> Escalate
+    Admin --> Metrics
+    Admin --> Manage

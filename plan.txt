@@ -1,0 +1,563 @@
+Lighthouse SOC
+What
+
+A role-based SOC triage platform with separate workflows for:
+
+Reporter
+Analyst / Responder
+Admin / SOC Lead
+Why
+
+This makes the project feel like a real security operations product instead of a script with extra screens.
+
+How
+
+Build one application, with:
+
+shared backend
+shared database
+role-based routes
+role-based permissions
+different screens per user group
+1. Core roles
+Reporter
+
+Purpose: submit alerts or suspicious activity.
+
+Typical user:
+
+employee
+helpdesk agent
+internal user reporting phishing or suspicious behavior
+
+Can:
+
+submit new alert
+view their own submitted alerts
+add extra evidence to their own reports
+
+Cannot:
+
+view analyst queue
+see other incidents
+access metrics or admin settings
+Analyst / Responder
+
+Purpose: triage and work incidents.
+
+Typical user:
+
+junior SOC analyst
+responder
+security operations staff
+
+Can:
+
+view alert queue
+open incidents
+enrich context
+add notes
+assign severity/confidence
+change status
+escalate
+close incidents
+view playbook suggestions
+
+Cannot:
+
+manage users
+change system rules unless explicitly allowed
+access admin-only reporting controls
+Admin / SOC Lead
+
+Purpose: oversight, analytics, governance.
+
+Typical user:
+
+team lead
+SOC manager
+security admin
+
+Can:
+
+view all incidents
+view analytics and trends
+manage users
+review escalation rates
+review false positives
+manage playbooks and rule settings
+export reports
+
+May also:
+
+impersonate analyst visibility for oversight
+reassign incidents
+2. Route structure
+
+Best approach: one app, separate protected routes.
+
+Public / auth
+/login
+/logout
+/unauthorized
+Reporter routes
+/reporter
+/reporter/new-alert
+/reporter/my-alerts
+/reporter/my-alerts/:id
+Analyst routes
+/analyst
+/analyst/queue
+/analyst/incidents/:id
+/analyst/playbooks
+/analyst/assets
+/analyst/search
+Admin routes
+/admin
+/admin/dashboard
+/admin/incidents
+/admin/reports
+/admin/users
+/admin/playbooks
+/admin/settings
+
+That structure is clean and easy to explain.
+
+3. Permissions model
+
+Use simple RBAC.
+
+Example permission matrix
+Action	Reporter	Analyst	Admin
+Submit alert	Yes	Yes	Yes
+View own alerts	Yes	Yes	Yes
+View all incidents	No	Yes	Yes
+Update incident status	No	Yes	Yes
+Add analyst notes	No	Yes	Yes
+Escalate incidents	No	Yes	Yes
+View analytics	No	Limited	Yes
+Manage users	No	No	Yes
+Edit playbooks	No	No	Yes
+Export reports	No	Limited	Yes
+
+For MVP, keep it simple:
+
+Reporter
+Analyst
+Admin
+4. Main screens
+Reporter screens
+A. New Alert
+
+Purpose: submit a suspicious event.
+
+Fields:
+
+alert type
+affected user
+affected asset/system
+severity estimate by reporter
+description
+evidence attachment name/path
+contact info
+
+Example alert types:
+
+phishing reported
+suspicious login
+malware suspected
+device lost/stolen
+unusual behavior
+policy violation
+B. My Alerts
+
+Shows:
+
+submitted alerts
+current status
+last update
+assigned analyst if relevant
+C. Alert Detail
+
+Shows:
+
+original report
+current status
+SOC notes visible to reporter, if allowed
+requests for more information
+Analyst screens
+A. Queue
+
+This is the heart of the app.
+
+Columns:
+
+priority
+alert ID
+alert type
+user/asset
+severity
+confidence
+status
+age
+
+Filters:
+
+alert type
+severity
+status
+assigned to me
+escalated only
+B. Incident Detail
+
+The main analyst workspace.
+
+Panels:
+
+raw alert data
+enrichment/context
+severity/confidence
+recommended actions
+notes timeline
+status controls
+
+Actions:
+
+assign to self
+update severity
+update confidence
+add notes
+escalate
+contain
+close
+mark false positive
+C. Playbooks
+
+List of recommended response steps by alert type.
+
+Examples:
+
+phishing
+impossible travel
+malware
+suspicious PowerShell
+brute force attempt
+D. Assets / Search
+
+Quick lookup for:
+
+asset criticality
+user privilege level
+prior alert history
+
+For MVP this can just read from JSON or SQLite.
+
+Admin screens
+A. Dashboard
+
+Key metrics:
+
+total alerts
+open incidents
+critical/high count
+mean triage time
+escalations
+false positives
+
+Charts:
+
+alerts by severity
+alerts over time
+top alert types
+incident status distribution
+B. Incident Oversight
+
+A table view across all incidents with sorting/filtering.
+
+Useful for:
+
+reviewing backlog
+finding stuck cases
+identifying noisy alert categories
+C. Reports
+
+Exports and summaries:
+
+weekly incident report
+severity distribution
+top affected assets
+team activity summary
+D. Users
+
+Simple admin page:
+
+username
+role
+status
+assigned incidents
+E. Settings
+
+Rule tuning:
+
+severity thresholds
+confidence thresholds
+routing rules
+default playbooks
+
+This can be mocked for MVP.
+
+5. Core database entities
+
+You do not need a giant schema. Keep it tight.
+
+users
+id
+username
+full_name
+role
+email
+is_active
+created_at
+alerts
+
+Raw submitted or ingested events.
+
+id
+alert_id
+reporter_user_id
+alert_type
+description
+affected_user
+affected_asset
+source_ip
+raw_payload
+status
+created_at
+updated_at
+incidents
+
+The analyst-owned triage record.
+
+id
+alert_id
+severity
+confidence
+priority
+assigned_to
+escalation_level
+incident_status
+mitre_tactic
+created_at
+updated_at
+closed_at
+enrichments
+id
+incident_id
+ip_reputation
+geo_location
+user_typical_location
+asset_criticality
+account_type
+repeat_alert_count
+notes
+created_at
+notes
+id
+incident_id
+author_user_id
+note_type
+content
+created_at
+
+note_type could be:
+
+analyst_note
+escalation_note
+closure_note
+system_note
+playbooks
+id
+alert_type
+title
+steps_json
+severity_hint
+audit_log
+
+Very good for realism.
+
+id
+user_id
+incident_id
+action
+details
+created_at
+
+This helps show traceability.
+
+6. Suggested incident lifecycle
+
+Keep statuses realistic but not excessive.
+
+New
+In Review
+Escalated
+Contained
+Closed
+False Positive
+Basic flow
+Alert submitted
+→ New
+→ In Review
+→ Escalated or Contained
+→ Closed / False Positive
+
+This is enough for a junior-SOC simulation.
+
+7. Recommended MVP screen set
+
+If you want discipline, build only these first:
+
+Reporter
+New Alert
+My Alerts
+Analyst
+Queue
+Incident Detail
+Admin
+Dashboard
+
+That is enough for a believable MVP.
+
+8. Suggested API shape
+
+Even if you do not fully build an API yet, design it as if you could.
+
+Auth
+POST /api/login
+POST /api/logout
+GET /api/me
+Alerts
+POST /api/alerts
+GET /api/alerts/:id
+GET /api/reporter/alerts
+Incidents
+GET /api/incidents
+GET /api/incidents/:id
+PATCH /api/incidents/:id/status
+PATCH /api/incidents/:id/assign
+PATCH /api/incidents/:id/score
+POST /api/incidents/:id/notes
+POST /api/incidents/:id/escalate
+Admin
+GET /api/admin/metrics
+GET /api/admin/reports
+GET /api/admin/users
+PATCH /api/admin/users/:id/role
+
+Even if you only mock some of this, it makes the design solid.
+
+9. Best build path
+Phase 1 — CLI-first engine
+
+Build:
+
+alert intake
+enrichment
+severity/confidence scoring
+SQLite logging
+role-based menus
+
+This proves the logic.
+
+Phase 2 — lightweight UI
+
+Use Streamlit.
+
+Create pages:
+
+Reporter
+Analyst Queue
+Incident Detail
+Admin Dashboard
+
+This gives you screenshots and polish fast.
+
+Phase 3 — app-like structure
+
+Optionally move to Flask later if you want:
+
+proper routes
+login/session handling
+RBAC decorators
+
+But you do not need that on day one.
+
+10. Recommended tech choice
+
+For your current goal, I’d do:
+
+MVP stack
+Python
+SQLite
+JSON
+Streamlit
+
+Why:
+
+fast to build
+visual
+easy role-based pages
+easy charts
+easy screenshots for portfolio
+
+You can still describe it as:
+
+a Python-based SOC triage platform with role-based workflows
+
+That is fine.
+
+11. Folder structure
+lighthouse-soc/
+├── app/
+│   ├── main.py
+│   ├── auth.py
+│   ├── roles.py
+│   ├── database.py
+│   ├── models.py
+│   ├── services/
+│   │   ├── parser.py
+│   │   ├── enricher.py
+│   │   ├── scorer.py
+│   │   ├── router.py
+│   │   └── playbooks.py
+│   └── ui/
+│       ├── reporter.py
+│       ├── analyst.py
+│       └── admin.py
+├── data/
+│   ├── sample_alerts.json
+│   ├── assets.json
+│   ├── users.json
+│   ├── ip_reputation.json
+│   └── playbooks.json
+├── db/
+│   └── lighthouse.db
+├── tests/
+├── README.md
+└── requirements.txt
+
+Very presentable.
+
+12. What each role should feel like
+Reporter
+
+Simple, low-friction, limited visibility.
+
+Analyst
+
+Dense, action-oriented, queue-driven.
+
+Admin
+
+Summarized, high-level, trend-focused.
+

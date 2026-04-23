@@ -1,0 +1,1 @@
+"""Lighthouse SOC application package."""

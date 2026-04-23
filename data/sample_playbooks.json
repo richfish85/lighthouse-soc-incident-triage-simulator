@@ -1,0 +1,74 @@
+[
+  {
+    "alert_type": "Phishing Reported",
+    "title": "Phishing Response",
+    "severity_hint": "Medium",
+    "created_at": "2026-04-18T09:00:00",
+    "steps": [
+      "Validate the sender, subject line, and delivery path.",
+      "Review embedded links or attachments in a sandboxed context.",
+      "Contact the user to confirm interaction and collect timeline details.",
+      "Block malicious indicators and contain impacted accounts if needed."
+    ]
+  },
+  {
+    "alert_type": "Impossible Travel Login",
+    "title": "Impossible Travel Response",
+    "severity_hint": "High",
+    "created_at": "2026-04-18T09:01:00",
+    "steps": [
+      "Verify the user's recent travel or VPN usage.",
+      "Review MFA prompts, device posture, and session history.",
+      "Reset credentials and revoke sessions if the activity is untrusted.",
+      "Escalate if the account is privileged or business critical."
+    ]
+  },
+  {
+    "alert_type": "Repeated Failed Logins",
+    "title": "Failed Login Triage",
+    "severity_hint": "Medium",
+    "created_at": "2026-04-18T09:02:00",
+    "steps": [
+      "Check whether the account owner expected authentication failures.",
+      "Look for lockout, spray, or brute force patterns across assets.",
+      "Confirm whether the source is known or suspicious.",
+      "Escalate if repeated failures target privileged accounts."
+    ]
+  },
+  {
+    "alert_type": "Malware Detection",
+    "title": "Malware Containment",
+    "severity_hint": "High",
+    "created_at": "2026-04-18T09:03:00",
+    "steps": [
+      "Validate the detection and isolate the host if confidence is high.",
+      "Review recent process, file, and network activity on the asset.",
+      "Preserve key evidence before cleanup steps.",
+      "Confirm recovery actions and close only after clean rescans."
+    ]
+  },
+  {
+    "alert_type": "Suspicious PowerShell",
+    "title": "PowerShell Abuse Review",
+    "severity_hint": "High",
+    "created_at": "2026-04-18T09:04:00",
+    "steps": [
+      "Inspect the command line, parent process, and execution policy.",
+      "Look for encoded commands or outbound connections.",
+      "Assess whether the behavior matches expected admin activity.",
+      "Escalate if privilege abuse or persistence is suspected."
+    ]
+  },
+  {
+    "alert_type": "Privilege Escalation Attempt",
+    "title": "Privilege Escalation Response",
+    "severity_hint": "Critical",
+    "created_at": "2026-04-18T09:05:00",
+    "steps": [
+      "Validate the privilege change event and affected identity.",
+      "Review adjacent admin actions, tickets, and approvals.",
+      "Contain the account or host if the change is unauthorized.",
+      "Escalate immediately for privileged admin assets."
+    ]
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "asset_name": "FIN-WS-01",
+    "asset_owner": "olivia.chen",
+    "asset_criticality": "Critical",
+    "environment": "Production",
+    "platform": "Windows Endpoint"
+  },
+  {
+    "asset_name": "ENG-BUILD-01",
+    "asset_owner": "samir.patel",
+    "asset_criticality": "High",
+    "environment": "Engineering",
+    "platform": "Linux Build Host"
+  },
+  {
+    "asset_name": "MKT-LAPTOP-22",
+    "asset_owner": "nina.rojas",
+    "asset_criticality": "Medium",
+    "environment": "Corporate",
+    "platform": "macOS Laptop"
+  },
+  {
+    "asset_name": "IT-ADMIN-01",
+    "asset_owner": "harper.lee",
+    "asset_criticality": "Critical",
+    "environment": "Infrastructure",
+    "platform": "Windows Admin Workstation"
+  },
+  {
+    "asset_name": "HR-SHARED-03",
+    "asset_owner": "liam.nguyen",
+    "asset_criticality": "Medium",
+    "environment": "Shared Services",
+    "platform": "Windows Shared PC"
+  },
+  {
+    "asset_name": "EXEC-LAPTOP-07",
+    "asset_owner": "ava.brooks",
+    "asset_criticality": "High",
+    "environment": "Executive",
+    "platform": "Windows Laptop"
+  }
+]

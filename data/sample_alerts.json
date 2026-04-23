@@ -1,0 +1,360 @@
+[
+  {
+    "alert_id": "ALT-1001",
+    "reporter_username": "reporter01",
+    "alert_type": "Impossible Travel Login",
+    "severity_estimate": "High",
+    "description": "Finance admin account logged in from Jakarta shortly after a successful Melbourne sign-in.",
+    "affected_user": "olivia.chen",
+    "affected_asset": "FIN-WS-01",
+    "source_ip": "203.0.113.19",
+    "evidence_name": "impossible_travel_case.txt",
+    "occurred_at": "2026-04-20T08:12:00",
+    "location": "Melbourne, Australia",
+    "attachments": [
+      {
+        "name": "impossible_travel_case.txt",
+        "size": 245760,
+        "type": "text/plain"
+      }
+    ],
+    "contact_info": "mia.santos@lighthouse.demo",
+    "raw_payload": {
+      "provider": "Entra ID",
+      "event_type": "ImpossibleTravel",
+      "event_count": 7
+    },
+    "status": "Escalated",
+    "created_at": "2026-04-20T08:15:00",
+    "updated_at": "2026-04-20T08:48:00",
+    "incident": {
+      "incident_id": "INC-2001",
+      "severity": "High",
+      "confidence": "High",
+      "priority": "P1",
+      "assigned_to": "analyst01",
+      "escalation_level": 1,
+      "incident_status": "Escalated",
+      "mitre_tactic": "Credential Access",
+      "event_count": 7,
+      "created_at": "2026-04-20T08:18:00",
+      "updated_at": "2026-04-20T08:48:00",
+      "closed_at": null
+    },
+    "enrichment": {
+      "ip_reputation": "Suspicious",
+      "geo_location": "Jakarta",
+      "user_typical_location": "Melbourne",
+      "asset_criticality": "Critical",
+      "account_type": "Privileged",
+      "repeat_alert_count": 3,
+      "notes": "Strong geo mismatch and privileged user context."
+    },
+    "notes": [
+      {
+        "author_username": "analyst01",
+        "note_type": "analyst_note",
+        "content": "User confirmed no travel. MFA fatigue prompts also reported.",
+        "visible_to_reporter": false,
+        "created_at": "2026-04-20T08:36:00"
+      }
+    ]
+  },
+  {
+    "alert_id": "ALT-1002",
+    "reporter_username": "reporter01",
+    "alert_type": "Malware Detection",
+    "severity_estimate": "High",
+    "description": "Endpoint scanner flagged a suspected loader on the engineering build host.",
+    "affected_user": "samir.patel",
+    "affected_asset": "ENG-BUILD-01",
+    "source_ip": "198.51.100.42",
+    "evidence_name": "loader_detection.json",
+    "occurred_at": "2026-04-20T09:00:00",
+    "location": "Sydney, Australia",
+    "attachments": [
+      {
+        "name": "loader_detection.json",
+        "size": 184320,
+        "type": "application/json"
+      }
+    ],
+    "contact_info": "mia.santos@lighthouse.demo",
+    "raw_payload": {
+      "provider": "EDR",
+      "event_type": "MalwareDetection",
+      "event_count": 5
+    },
+    "status": "Contained",
+    "created_at": "2026-04-20T09:05:00",
+    "updated_at": "2026-04-20T09:42:00",
+    "incident": {
+      "incident_id": "INC-2002",
+      "severity": "High",
+      "confidence": "High",
+      "priority": "P2",
+      "assigned_to": "analyst01",
+      "escalation_level": 0,
+      "incident_status": "Contained",
+      "mitre_tactic": "Execution",
+      "event_count": 5,
+      "created_at": "2026-04-20T09:08:00",
+      "updated_at": "2026-04-20T09:42:00",
+      "closed_at": null
+    },
+    "enrichment": {
+      "ip_reputation": "Malicious",
+      "geo_location": "Bucharest",
+      "user_typical_location": "Sydney",
+      "asset_criticality": "High",
+      "account_type": "Standard",
+      "repeat_alert_count": 1,
+      "notes": "Host isolated from build segment while sample is reviewed."
+    },
+    "notes": [
+      {
+        "author_username": "analyst01",
+        "note_type": "containment_note",
+        "content": "Build host isolated and scan results preserved for malware review.",
+        "visible_to_reporter": false,
+        "created_at": "2026-04-20T09:30:00"
+      }
+    ]
+  },
+  {
+    "alert_id": "ALT-1003",
+    "reporter_username": "reporter01",
+    "alert_type": "Phishing Reported",
+    "severity_estimate": "Medium",
+    "description": "Marketing user reported a payroll-themed email with a suspicious link.",
+    "affected_user": "nina.rojas",
+    "affected_asset": "MKT-LAPTOP-22",
+    "source_ip": "192.0.2.55",
+    "evidence_name": "payroll_notice.eml",
+    "occurred_at": "2026-04-19T13:10:00",
+    "location": "Brisbane, Australia",
+    "attachments": [
+      {
+        "name": "payroll_notice.eml",
+        "size": 98304,
+        "type": "message/rfc822"
+      }
+    ],
+    "contact_info": "mia.santos@lighthouse.demo",
+    "raw_payload": {
+      "provider": "Mail Gateway",
+      "event_type": "UserReportedPhish",
+      "event_count": 2
+    },
+    "status": "Closed",
+    "created_at": "2026-04-19T13:20:00",
+    "updated_at": "2026-04-19T14:05:00",
+    "incident": {
+      "incident_id": "INC-2003",
+      "severity": "Medium",
+      "confidence": "Medium",
+      "priority": "P4",
+      "assigned_to": "analyst01",
+      "escalation_level": 0,
+      "incident_status": "Closed",
+      "mitre_tactic": "Initial Access",
+      "event_count": 2,
+      "created_at": "2026-04-19T13:25:00",
+      "updated_at": "2026-04-19T14:05:00",
+      "closed_at": "2026-04-19T14:05:00"
+    },
+    "enrichment": {
+      "ip_reputation": "Unknown",
+      "geo_location": "Melbourne",
+      "user_typical_location": "Brisbane",
+      "asset_criticality": "Medium",
+      "account_type": "Standard",
+      "repeat_alert_count": 0,
+      "notes": "No click-through observed and indicators blocked after review."
+    },
+    "notes": [
+      {
+        "author_username": "analyst01",
+        "note_type": "closure_note",
+        "content": "Link was blocked upstream. No additional user impact confirmed.",
+        "visible_to_reporter": true,
+        "created_at": "2026-04-19T14:00:00"
+      }
+    ]
+  },
+  {
+    "alert_id": "ALT-1004",
+    "reporter_username": "reporter01",
+    "alert_type": "Suspicious PowerShell",
+    "severity_estimate": "High",
+    "description": "Privileged workstation launched encoded PowerShell followed by outbound network access.",
+    "affected_user": "harper.lee",
+    "affected_asset": "IT-ADMIN-01",
+    "source_ip": "198.51.100.77",
+    "evidence_name": "powershell_trace.txt",
+    "occurred_at": "2026-04-21T07:35:00",
+    "location": "Melbourne, Australia",
+    "attachments": [
+      {
+        "name": "powershell_trace.txt",
+        "size": 153600,
+        "type": "text/plain"
+      }
+    ],
+    "contact_info": "mia.santos@lighthouse.demo",
+    "raw_payload": {
+      "provider": "Sysmon",
+      "event_type": "EncodedPowerShell",
+      "event_count": 9
+    },
+    "status": "In Review",
+    "created_at": "2026-04-21T07:40:00",
+    "updated_at": "2026-04-21T08:12:00",
+    "incident": {
+      "incident_id": "INC-2004",
+      "severity": "High",
+      "confidence": "High",
+      "priority": "P1",
+      "assigned_to": "analyst01",
+      "escalation_level": 0,
+      "incident_status": "In Review",
+      "mitre_tactic": "Execution",
+      "event_count": 9,
+      "created_at": "2026-04-21T07:43:00",
+      "updated_at": "2026-04-21T08:12:00",
+      "closed_at": null
+    },
+    "enrichment": {
+      "ip_reputation": "Malicious",
+      "geo_location": "Warsaw",
+      "user_typical_location": "Melbourne",
+      "asset_criticality": "Critical",
+      "account_type": "Privileged",
+      "repeat_alert_count": 2,
+      "notes": "Privileged endpoint with suspicious script execution and external callback."
+    },
+    "notes": [
+      {
+        "author_username": "analyst01",
+        "note_type": "analyst_note",
+        "content": "Reviewing command line lineage and checking whether admin change was approved.",
+        "visible_to_reporter": false,
+        "created_at": "2026-04-21T08:05:00"
+      }
+    ]
+  },
+  {
+    "alert_id": "ALT-1005",
+    "reporter_username": "reporter01",
+    "alert_type": "Repeated Failed Logins",
+    "severity_estimate": "Medium",
+    "description": "Executive laptop received multiple failed login attempts from a suspicious external address.",
+    "affected_user": "ava.brooks",
+    "affected_asset": "EXEC-LAPTOP-07",
+    "source_ip": "203.0.113.88",
+    "evidence_name": "failed_logins.csv",
+    "occurred_at": "2026-04-18T15:58:00",
+    "location": "Auckland, New Zealand",
+    "attachments": [
+      {
+        "name": "failed_logins.csv",
+        "size": 114688,
+        "type": "text/csv"
+      }
+    ],
+    "contact_info": "mia.santos@lighthouse.demo",
+    "raw_payload": {
+      "provider": "VPN Gateway",
+      "event_type": "RepeatedFailedLogins",
+      "event_count": 14
+    },
+    "status": "False Positive",
+    "created_at": "2026-04-18T16:05:00",
+    "updated_at": "2026-04-18T16:45:00",
+    "incident": {
+      "incident_id": "INC-2005",
+      "severity": "Medium",
+      "confidence": "Low",
+      "priority": "P4",
+      "assigned_to": "analyst01",
+      "escalation_level": 0,
+      "incident_status": "False Positive",
+      "mitre_tactic": "Credential Access",
+      "event_count": 14,
+      "created_at": "2026-04-18T16:08:00",
+      "updated_at": "2026-04-18T16:45:00",
+      "closed_at": "2026-04-18T16:45:00"
+    },
+    "enrichment": {
+      "ip_reputation": "Suspicious",
+      "geo_location": "Singapore",
+      "user_typical_location": "Auckland",
+      "asset_criticality": "High",
+      "account_type": "Standard",
+      "repeat_alert_count": 1,
+      "notes": "Corporate red-team exercise matched the timing of failed logins."
+    },
+    "notes": [
+      {
+        "author_username": "analyst01",
+        "note_type": "closure_note",
+        "content": "Confirmed as an approved security exercise. No further action required.",
+        "visible_to_reporter": true,
+        "created_at": "2026-04-18T16:44:00"
+      }
+    ]
+  },
+  {
+    "alert_id": "ALT-1006",
+    "reporter_username": "reporter01",
+    "alert_type": "Privilege Escalation Attempt",
+    "severity_estimate": "Critical",
+    "description": "HR shared workstation attempted an unauthorized local admin group change.",
+    "affected_user": "liam.nguyen",
+    "affected_asset": "HR-SHARED-03",
+    "source_ip": "192.0.2.101",
+    "evidence_name": "local_admin_change.log",
+    "occurred_at": "2026-04-22T06:44:00",
+    "location": "Perth, Australia",
+    "attachments": [
+      {
+        "name": "local_admin_change.log",
+        "size": 65536,
+        "type": "text/plain"
+      }
+    ],
+    "contact_info": "mia.santos@lighthouse.demo",
+    "raw_payload": {
+      "provider": "Windows Security",
+      "event_type": "PrivilegeEscalationAttempt",
+      "event_count": 4
+    },
+    "status": "New",
+    "created_at": "2026-04-22T06:50:00",
+    "updated_at": "2026-04-22T06:50:00",
+    "incident": {
+      "incident_id": "INC-2006",
+      "severity": "Critical",
+      "confidence": "Medium",
+      "priority": "P2",
+      "assigned_to": null,
+      "escalation_level": 0,
+      "incident_status": "New",
+      "mitre_tactic": "Privilege Escalation",
+      "event_count": 4,
+      "created_at": "2026-04-22T06:52:00",
+      "updated_at": "2026-04-22T06:52:00",
+      "closed_at": null
+    },
+    "enrichment": {
+      "ip_reputation": "Benign",
+      "geo_location": "Auckland",
+      "user_typical_location": "Perth",
+      "asset_criticality": "Medium",
+      "account_type": "Standard",
+      "repeat_alert_count": 0,
+      "notes": "Needs validation against approved workstation maintenance activity."
+    },
+    "notes": []
+  }
+]

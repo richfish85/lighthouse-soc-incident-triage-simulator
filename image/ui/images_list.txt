@@ -1,0 +1,140 @@
+LIGHTHOUSE SOC UI ASSET LIST
+Prepared: 2026-04-23
+Purpose: image and illustration sourcing checklist derived from the three UI reference mockups provided in chat.
+
+NOTE ON REFERENCE FILES
+- The three mockups were attached in-chat and were available for analysis during this session.
+- This environment does not expose those chat attachments as directly writable local image files, so I could not auto-export the originals into this repo.
+- Recommended local filenames for manual save/export into this folder:
+  - image/ui/reporter_portal_reference.png
+  - image/ui/admin_console_overview_reference.png
+  - image/ui/analyst_console_reference.png
+
+SHARED BRAND ASSETS
+1. lighthouse_soc_logo_lockup.svg
+   What: primary Lighthouse SOC logo lockup with circular lighthouse badge plus wordmark.
+   Why: used across Reporter, Admin, and Analyst shells.
+   How: create as SVG on transparent background; keep the badge reusable separately from the wordmark.
+   Priority: High
+   Seen in: all 3 mockups
+
+2. lighthouse_soc_mark.svg
+   What: compact standalone lighthouse badge without the full wordmark.
+   Why: useful for favicon, collapsed nav, splash/loading, and future app icon use.
+   How: derive from the main logo as a simplified SVG mark.
+   Priority: Medium
+   Seen in: implied from the same brand system across all 3 mockups
+
+3. avatar_placeholder_dark.svg
+   What: neutral dark-theme avatar placeholder.
+   Why: useful when a real user photo is unavailable.
+   How: SVG or CSS-generated circle avatar; do not use a stock photo.
+   Priority: Low
+   Seen in: Analyst mockup header, reusable elsewhere
+
+REPORTER PORTAL MOCKUP
+Reference file: image/ui/reporter_portal_reference.png
+
+4. reporter_tips_lighthouse_scene.svg
+   What: dark silhouette-style lighthouse scene for the Security Reporting Tips card.
+   Why: this is the only distinctive illustration in the Reporter mockup and helps the page feel complete.
+   How: original SVG illustration, not a direct copy; dark navy silhouette, lighthouse tower, shoreline/waves, restrained detail.
+   Priority: High
+   Placement: right rail, bottom-right of the tips card
+
+5. optional_upload_empty_state_illustration.svg
+   What: small supporting upload/evidence illustration for future refinement of the attachment zone.
+   Why: not required for the current prototype, but helpful if the upload area becomes more productized later.
+   How: minimal line-art SVG; keep it subtle and not playful.
+   Priority: Low
+   Placement: evidence / attachment area if redesigned
+
+6. icon set, not sourced as images
+   What: alert, mail, shield, calendar, user, asset, location, paperclip, lock, bell, support, chevron icons.
+   Why: these should come from one consistent icon library, not individual raster image assets.
+   How: use Lucide, Heroicons, Material Symbols, or another single SVG icon system.
+   Priority: High
+   Placement: form labels, sidebar, top header, footer
+
+ADMIN CONSOLE MOCKUP
+Reference file: image/ui/admin_console_overview_reference.png
+
+7. no unique raster images required
+   What: the Admin mockup is mostly layout, charts, badges, and icons.
+   Why: the visual weight comes from data-viz components rather than illustrations or photos.
+   How: build charts with a charting library; reuse the brand logo and icon set.
+   Priority: High
+   Placement: entire overview screen
+
+8. kpi_glyph_icon_set.svg
+   What: consistent icon family for alerts, open incidents, critical, triage time, escalations, false positives, and system status.
+   Why: the KPI row depends on clean icon consistency more than bespoke imagery.
+   How: choose one line/duotone icon set and keep stroke weights consistent.
+   Priority: High
+   Placement: KPI cards, nav, activity feed, health panels
+
+9. optional_asset_bar_legend_icons.svg
+   What: tiny supporting icons/markers for assets, services, integrations, and reports.
+   Why: useful if the Admin UI evolves into a more visual dashboard later.
+   How: keep vector-based and minimal.
+   Priority: Low
+   Placement: sidebar, systems panels, reports
+
+ANALYST CONSOLE MOCKUP
+Reference file: image/ui/analyst_console_reference.png
+
+10. geo_silhouette_indonesia.svg
+    What: simplified Indonesia map silhouette used in the Geo Location context card.
+    Why: gives the alert context area a stronger visual anchor without needing a full map component.
+    How: source or create a simple SVG silhouette; keep it monochrome and dark-theme friendly.
+    Priority: Medium
+    Placement: Analyst alert context card, Geo Location
+
+11. geo_silhouette_australia.svg
+    What: simplified Australia map silhouette used in the User's Typical Location card.
+    Why: pairs with the Geo Location card and supports the impossible-travel narrative.
+    How: source or create a simple SVG silhouette; keep it monochrome and dark-theme friendly.
+    Priority: Medium
+    Placement: Analyst alert context card, User's Typical Location
+
+12. analyst_action_icon_set.svg
+    What: icons for timeline stages, playbook actions, enrichment indicators, assignment, containment, closure, false positive marking, and notes.
+    Why: most of the Analyst screen personality comes from functional iconography rather than illustration.
+    How: use the same SVG icon family chosen for Reporter/Admin.
+    Priority: High
+    Placement: timeline, right rail, quick actions, notes toolbar, header
+
+13. analyst_user_avatar_placeholder.svg
+    What: generic user avatar for analyst profile chips and assigned-to displays.
+    Why: optional reusable support asset if initials-only avatars feel too plain later.
+    How: create as vector or keep CSS-only.
+    Priority: Low
+    Placement: top header and assignment views
+
+ASSET SUMMARY BY PRIORITY
+- High
+  - lighthouse_soc_logo_lockup.svg
+  - reporter_tips_lighthouse_scene.svg
+  - icon set / analyst_action_icon_set.svg / kpi_glyph_icon_set.svg
+- Medium
+  - lighthouse_soc_mark.svg
+  - geo_silhouette_indonesia.svg
+  - geo_silhouette_australia.svg
+- Low
+  - avatar_placeholder_dark.svg
+  - optional_upload_empty_state_illustration.svg
+  - optional_asset_bar_legend_icons.svg
+  - analyst_user_avatar_placeholder.svg
+
+RECOMMENDED FORMAT AND SOURCING RULES
+- Prefer SVG for all logos, illustrations, maps, and icons.
+- Avoid raster screenshots as production assets; keep the reference mockups only as design guidance.
+- Avoid copying the mockups asset-for-asset; recreate the lighthouse illustration and logo system as original repo-owned assets.
+- Keep the palette aligned with the prototype: deep navy/charcoal base, off-white text, restrained gold accent, contained severity colors.
+- Use one icon family across all roles so the stack can change later without redoing the asset language.
+
+NEXT UI PASS PREP
+- Save the three attached mockups into this folder using the filenames listed above.
+- Source or draw the shared logo lockup first.
+- Create the Reporter lighthouse illustration second.
+- Add the two geo silhouettes only if the next stack keeps the Analyst context cards.

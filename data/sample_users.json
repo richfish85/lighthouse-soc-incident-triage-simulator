@@ -1,0 +1,60 @@
+{
+  "app_users": [
+    {
+      "username": "reporter01",
+      "full_name": "Mia Santos",
+      "role": "Reporter",
+      "email": "mia.santos@lighthouse.demo",
+      "is_active": true,
+      "created_at": "2026-04-18T08:30:00"
+    },
+    {
+      "username": "analyst01",
+      "full_name": "Jordan Kim",
+      "role": "Analyst",
+      "email": "jordan.kim@lighthouse.demo",
+      "is_active": true,
+      "created_at": "2026-04-18T08:35:00"
+    },
+    {
+      "username": "admin01",
+      "full_name": "Riley Chen",
+      "role": "Admin",
+      "email": "riley.chen@lighthouse.demo",
+      "is_active": true,
+      "created_at": "2026-04-18T08:40:00"
+    }
+  ],
+  "identity_profiles": [
+    {
+      "username": "olivia.chen",
+      "typical_location": "Melbourne",
+      "account_type": "Privileged"
+    },
+    {
+      "username": "samir.patel",
+      "typical_location": "Sydney",
+      "account_type": "Standard"
+    },
+    {
+      "username": "nina.rojas",
+      "typical_location": "Brisbane",
+      "account_type": "Standard"
+    },
+    {
+      "username": "harper.lee",
+      "typical_location": "Melbourne",
+      "account_type": "Privileged"
+    },
+    {
+      "username": "liam.nguyen",
+      "typical_location": "Perth",
+      "account_type": "Standard"
+    },
+    {
+      "username": "ava.brooks",
+      "typical_location": "Auckland",
+      "account_type": "Standard"
+    }
+  ]
+}

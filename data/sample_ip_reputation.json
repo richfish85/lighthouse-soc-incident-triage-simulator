@@ -1,0 +1,38 @@
+[
+  {
+    "source_ip": "203.0.113.19",
+    "reputation": "Suspicious",
+    "geo_location": "Jakarta",
+    "note": "Seen in credential stuffing simulation feed."
+  },
+  {
+    "source_ip": "198.51.100.42",
+    "reputation": "Malicious",
+    "geo_location": "Bucharest",
+    "note": "Matched malware callback sandbox list."
+  },
+  {
+    "source_ip": "192.0.2.55",
+    "reputation": "Unknown",
+    "geo_location": "Melbourne",
+    "note": "Unclassified IP, location aligns with user baseline."
+  },
+  {
+    "source_ip": "203.0.113.88",
+    "reputation": "Suspicious",
+    "geo_location": "Singapore",
+    "note": "Triggered multiple failed login detections."
+  },
+  {
+    "source_ip": "198.51.100.77",
+    "reputation": "Malicious",
+    "geo_location": "Warsaw",
+    "note": "Associated with privilege escalation test chain."
+  },
+  {
+    "source_ip": "192.0.2.101",
+    "reputation": "Benign",
+    "geo_location": "Auckland",
+    "note": "Known corporate egress path."
+  }
+]

@@ -1,0 +1,433 @@
+Lighthouse SOC — MVP Product Brief
+
+Tagline: Navigate the noise.
+
+Product concept
+
+A lightweight SOC triage simulator that helps:
+
+ingest security alerts
+prioritize incidents
+guide analyst response
+track investigations
+surface operational metrics
+
+Think:
+
+Splunk lite
+TheHive lite
+beginner-friendly SOC workflow trainer
+MVP Goal
+
+Simulate the workflow of a junior SOC analyst, not replicate an enterprise SIEM.
+
+Success criteria:
+
+User can:
+
+✅ submit alert
+✅ triage alert
+✅ investigate alert
+✅ update incident lifecycle
+✅ see admin metrics
+
+That is MVP.
+
+Screen-by-screen blueprint
+SCREEN 1
+Login / Role Gateway
+
+Purpose:
+Route user by role.
+
+Simple screen:
+
+LIGHTHOUSE SOC
+
+[ Login ]
+
+Role:
+( ) Reporter
+( ) Analyst
+( ) Admin
+
+Optional fake users:
+
+reporter01
+analyst01
+admin01
+
+Good for demoing.
+
+REPORTER INTERFACE
+SCREEN 2
+Submit Alert
+
+Primary function:
+Create alert.
+
+Fields:
+
+Alert details
+Alert type dropdown
+Severity estimate dropdown
+Affected user
+Affected asset
+
+Alert type options:
+
+Phishing Reported
+Impossible Travel Login
+Repeated Failed Logins
+Malware Detection
+Suspicious PowerShell
+Privilege Escalation Attempt
+Description
+
+Free text box
+
+Evidence
+
+Mock upload:
+
+screenshot.png
+email_header.txt
+
+Buttons:
+
+Submit Alert
+Clear Form
+
+After submit:
+
+Alert ALT-1042 created
+Status: New
+SCREEN 3
+My Submitted Alerts
+
+Simple table:
+
+ID	Type	Status	Updated
+ALT-1042	Phishing	In Review	5m
+ALT-1038	Login Alert	Closed	Yesterday
+
+Click opens details.
+
+ANALYST INTERFACE
+
+This is your hero section.
+
+SCREEN 4
+Analyst Queue
+
+Landing page for analysts.
+
+Table:
+
+P	ID	Alert	Severity	Confidence	Status
+P1	ALT1007	Impossible Travel	High	High	New
+P2	ALT1011	Malware	High	Medium	Review
+
+Filters:
+
+Severity
+Status
+Assigned to me
+
+Actions:
+
+Open Incident
+Assign to Me
+Escalate
+
+This is the heartbeat of the product.
+
+SCREEN 5
+Incident Investigation View
+
+Most important screen.
+
+Three-column layout:
+
+LEFT PANEL
+
+Incident summary
+
+Alert ID
+Alert Type
+Affected User
+Source IP
+Asset
+Event Count
+MITRE Mapping
+
+Example:
+
+Credential Access
+Impossible Travel
+Finance Admin Account
+CENTER PANEL
+
+Enrichment & Context
+
+Show:
+
+IP Reputation: Suspicious
+Geo: Jakarta
+Typical User Geo: Melbourne
+Asset Criticality: High
+Account Type: Privileged
+Repeat Alerts: 3
+
+This is where SOC realism shows.
+
+RIGHT PANEL
+
+Recommended Actions / Playbook
+
+Example:
+
+1 Validate user travel
+2 Review MFA events
+3 Force password reset
+4 Escalate if suspicious
+
+Button:
+
+View Playbook
+
+Bottom panel:
+
+Investigation Notes
+User confirmed no travel.
+MFA fatigue prompts observed.
+Escalating Tier 2.
+
+Buttons:
+
+Save Notes
+Escalate
+Contain
+Close Incident
+False Positive
+
+This is the centerpiece of Lighthouse.
+
+SCREEN 6
+Playbooks
+
+Simple list:
+
+Phishing response
+Impossible travel response
+Malware response
+
+Click:
+
+Shows checklist.
+
+Example:
+
+☐ Review indicators
+☐ Validate user
+☐ Isolate host
+☐ Escalate if needed
+
+Very useful and visually strong.
+
+ADMIN INTERFACE
+SCREEN 7
+Admin Dashboard
+
+Executive/lead view.
+
+Metric cards:
+
+Total Alerts
+Open Incidents
+Critical Incidents
+Escalations
+Mean Triage Time
+False Positive Rate
+
+Charts:
+
+1 Alerts by severity
+2 Alert trends over time
+3 Top alert types
+4 Incident status distribution
+
+Cards:
+
+243 total alerts
+28 open incidents
+18m avg triage
+
+Looks very product-like.
+
+SCREEN 8
+Incident Oversight
+
+Table:
+
+All incidents across system.
+
+Useful fields:
+
+backlog age
+assigned analyst
+escalated incidents
+unresolved criticals
+
+This supports the dashboard.
+
+SCREEN 9
+Rule/Playbook Settings (Optional stretch)
+
+Can be mocked.
+
+Examples:
+
+Severity weights:
+
+Critical asset +4
+Privileged account +3
+Malicious IP +5
+
+Great for showing scoring logic.
+
+Core user flow
+Reporter flow
+Login
+→ Submit Alert
+→ Track Alert Status
+Analyst flow
+Login
+→ Open Queue
+→ Review Incident
+→ Enrich
+→ Act
+→ Update Status
+Admin flow
+Login
+→ Dashboard
+→ Review Metrics
+→ Review Incidents
+
+Simple and coherent.
+
+Navigation model
+Reporter
+
+Sidebar:
+
+New Alert
+My Alerts
+Contact SOC
+Analyst
+
+Sidebar:
+
+Queue
+Incidents
+Playbooks
+Assets
+Search
+Reports
+Admin
+
+Sidebar:
+
+Dashboard
+Incidents
+Analytics
+Users
+Reports
+Settings
+
+Consistent, role-driven.
+
+Sample incident scenarios for demo data
+
+Use 6 only.
+
+Perfect MVP set:
+
+1 Impossible Travel Login
+2 Malware Detection
+3 Phishing Reported
+4 Suspicious PowerShell
+5 Repeated Failed Logins
+6 Privilege Escalation Attempt
+
+Enough variety.
+
+Suggested priority logic
+Severity +
+Confidence +
+Asset Criticality +
+Privileged Account Weight
+=
+Priority
+
+P1–P5 output.
+
+This becomes a cool algorithm talking point.
+
+MVP database objects used by screens
+
+Used immediately:
+
+users
+alerts
+incidents
+enrichment
+notes
+playbooks
+
+Don’t add more yet.
+
+MVP visual style
+
+I’d lean:
+
+Dark ops-console aesthetic:
+
+navy / charcoal
+off-white text
+gold accent (from logo)
+minimal alert colors
+restrained, not “hacker movie”
+
+Inspired loosely by:
+
+Splunk
+Datadog
+Elastic
+
+Fits Lighthouse branding.
+
+What to build in order
+
+Build these screens in this exact order:
+
+Phase 1
+Login
+Submit Alert
+Analyst Queue
+Incident Detail
+
+Stop.
+
+That is already a project.
+
+Phase 2
+Playbooks
+Admin Dashboard
+
+Now it feels complete.
+
+Phase 3
+Oversight view
+Rule tuning
+Stretch ideas
