@@ -1,188 +1,320 @@
-# incident-triage-assistant
+# Lighthouse SOC — Incident Triage Simmulator
 
-## What
-Lighthouse SOC is a Python-based SOC triage simulator built inside `incident-triage-assistant/`.
+*A Python-based incident triage simulator demonstrating software engineering, systems design, and security workflow automation.*
 
-It gives three role-based views:
+**Built as a learning project to demonstrate software engineering fundamentals relevant to junior technical engineering roles.**
 
-- `Reporter` submits suspicious activity and tracks their own alerts
-- `Analyst` triages the queue, investigates context, adds notes, and updates incident status
-- `Admin` reviews metrics, trends, backlog health, and incident oversight
 
-This is an MVP, so the goal is not to clone a full SIEM. The goal is to simulate a clean junior-SOC workflow from alert intake to investigation and oversight.
+## What is this?
+
+**Lighthouse SOC** is a lightweight security operations simulation platform built to model how incidents move from reporting to investigation and oversight.
+
+Rather than replicating a full SIEM, this project focuses on core engineering concepts:
+
+* Role-based workflows
+* Data modelling with SQLite
+* Python service-layer architecture
+* Incident scoring logic
+* CLI tooling and testing
+* Interactive dashboard development with Streamlit
+
+It simulates three user roles:
+
+### Reporter
+
+* Submit suspicious activity reports
+* Track submitted alerts
+* View incident outcomes
+
+### Analyst
+
+* Triage incoming incidents
+* Review enrichment context
+* Apply playbooks
+* Add notes and update status
+
+### Admin
+
+* Review incident trends
+* Monitor backlog health
+* View operational metrics and oversight dashboards
+
+---
+
+# Why I Built This
+
+This project was designed as both:
+
+## 1. A Software Engineering Portfolio Project
+
+To demonstrate practical skills in:
+
+* Python development
+* SQL and data modelling
+* Service-oriented design
+* CLI tooling
+* Testing and debugging
+* UI prototyping
+
+## 2. A Systems Thinking Exercise
+
+To model how software components interact:
+
+* Intake → Processing → Scoring → Workflow → Reporting
+
+It intentionally emphasizes clean architecture over complexity.
+
+---
+
+# Example Workflow
+
+Example incident:
+
+**Impossible Travel Login**
+
+1. Reporter submits alert
+2. System opens incident record
+3. Asset/IP context is enriched
+4. Priority is calculated
+5. Analyst investigates and updates status
+6. Admin dashboards reflect incident impact
+
+---
+
+# Core Features
+
+## Implemented
+
+* Role-based workflow simulation
+* SQLite-backed incident and alert data
+* Streamlit UI with three user views
+* Seeded demo data and users
+* Priority scoring engine
+* CLI smoke tests
+* Pytest validation
+* Mermaid architecture diagrams
+
+---
+
+# Tech Stack
+
+| Area     | Technology      |
+| -------- | --------------- |
+| Language | Python          |
+| Data     | SQLite, JSON    |
+| UI       | Streamlit       |
+| Testing  | Pytest          |
+| Diagrams | Mermaid         |
+| CLI      | Python argparse |
+
+---
+
+# Architecture
+
+Project uses a simple service-first structure:
+
+```text
+app/
+├── main.py
+├── cli.py
+├── database.py
+├── seed.py
+├── services/
+├── ui/
+└── tests/
+```
+
+### Layers
+
+**Database**
+
+* Schema creation
+* Seed loading
+* Persistence
+
+**Services**
+
+* Alert intake
+* Enrichment
+* Scoring
+* Incident lifecycle
+* Metrics
+
+**UI**
+
+* Thin presentation layer over services
+
+**CLI**
+
+* Bootstrap
+* Smoke tests
+* Validation flows
+
+---
+
+# Priority Scoring Logic
+
+Priority is intentionally transparent:
+
+```text
+Severity
++ Confidence
++ Asset Criticality
++ Privileged Account Weight
+= Priority Score
+```
 
 Example:
 
-- A reporter submits `Impossible Travel Login`
-- The system opens an incident, enriches it with asset and IP context, and scores priority
-- An analyst reviews the playbook, adds notes, escalates or contains, and updates status
-- An admin sees the effect in dashboard metrics and oversight tables
+High severity
+High confidence
+Critical asset
+Privileged account
 
-## Checklist
-- [x] Role-based SOC workflow
-- [x] SQLite-backed alert and incident data
-- [x] Seeded demo users and sample incidents
-- [x] Streamlit interface for Reporter, Analyst, and Admin
-- [x] CLI smoke path for incident lifecycle validation
-- [x] Mermaid diagrams and walkthrough docs for portfolio presentation
+→ maps to **P1**
 
-## Why
-This project is designed to look and feel like a small security operations product instead of a script with a few forms.
+---
 
-The chosen stack is deliberate:
+# Quick Start
 
-- `Python` keeps the business logic readable
-- `SQLite` makes the demo self-contained
-- `JSON` keeps seed data easy to inspect and extend
-- `Streamlit` provides a fast way to deliver a polished interface and dashboard visuals
-
-This also makes the repo useful as both:
-
-- a build artifact you can run
-- a portfolio artifact you can present and explain
-
-## Checklist
-- [x] Fast local setup
-- [x] Clear service boundaries
-- [x] Reusable scoring and RBAC logic
-- [x] Strong demo story for interviews and portfolios
-
-## How
-The app is split into a few simple layers:
-
-- `app/database.py` creates and resets the SQLite schema
-- `app/seed.py` loads deterministic demo data
-- `app/services/` owns intake, enrichment, scoring, incident lifecycle, playbooks, and metrics
-- `app/ui/` keeps Streamlit pages thin by calling the service layer
-- `app/cli.py` gives repeatable bootstrap and smoke-test commands
-
-The priority algorithm is intentionally visible:
-
-`severity + confidence + asset criticality + privileged account weight = priority`
-
-Example:
-
-- `High severity`
-- `High confidence`
-- `Critical asset`
-- `Privileged account`
-
-This produces a high numeric score and maps to `P1`.
-
-## Checklist
-- [x] Service-first design
-- [x] Auto-open incident on alert creation
-- [x] RBAC enforced in the service layer
-- [x] Demo-friendly Streamlit navigation
-
-## Quick Start
-Install dependencies:
+## Install
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-Seed the demo database:
+## Seed Demo Data
 
 ```bash
 python -m app.cli seed --reset
 ```
 
-Run the Streamlit app:
+## Run App
 
 ```bash
 streamlit run app/main.py
 ```
 
-Run the CLI smoke path:
+## Run Smoke Tests
 
 ```bash
 python -m app.cli smoke
 ```
 
-Run tests:
+## Run Test Suite
 
 ```bash
 python -m pytest
 ```
 
-## Checklist
-- [ ] Install dependencies
-- [ ] Seed the database
-- [ ] Launch Streamlit
-- [ ] Run the smoke path
-- [ ] Run pytest
+---
 
-## Demo Users
-Use these seeded accounts from the login gateway:
+# Demo Accounts
 
-- `reporter01` - Mia Santos - Reporter
-- `analyst01` - Jordan Kim - Analyst
-- `admin01` - Riley Chen - Admin
+| User       | Role     |
+| ---------- | -------- |
+| reporter01 | Reporter |
+| analyst01  | Analyst  |
+| admin01    | Admin    |
 
-## MVP Screens
-- `Login / Role Gateway`
-- `Reporter / Submit Alert`
-- `Reporter / My Submitted Alerts`
-- `Analyst / Queue`
-- `Analyst / Incident Investigation View`
-- `Analyst / Playbooks`
-- `Admin / Dashboard`
-- `Admin / Incident Oversight`
+---
 
-## Sample Incident Scenarios
-- `Impossible Travel Login`
-- `Malware Detection`
-- `Phishing Reported`
-- `Suspicious PowerShell`
-- `Repeated Failed Logins`
-- `Privilege Escalation Attempt`
+# Sample Incident Scenarios
 
-## Project Structure
+* Impossible Travel Login
+* Malware Detection
+* Phishing Reported
+* Suspicious PowerShell
+* Repeated Failed Logins
+* Privilege Escalation Attempt
+
+---
+
+# Documentation
+
+## Diagrams
+
+* Architecture
+* RBAC Matrix
+* Incident Lifecycle
+* Screen Flow
+
+Located in:
+
 ```text
-incident-triage-assistant/
-├── app/
-│   ├── main.py
-│   ├── cli.py
-│   ├── auth.py
-│   ├── roles.py
-│   ├── database.py
-│   ├── models.py
-│   ├── seed.py
-│   ├── services/
-│   └── ui/
-├── data/
-├── diagrams/
-├── docs/
-├── db/
-└── tests/
+diagrams/
 ```
 
-## Diagrams And Walkthrough
-- Architecture: [diagrams/architecture.mmd](diagrams/architecture.mmd)
-- RBAC matrix: [diagrams/rbac-matrix.mmd](diagrams/rbac-matrix.mmd)
-- Incident lifecycle: [diagrams/incident-lifecycle.mmd](diagrams/incident-lifecycle.mmd)
-- Screen flow: [diagrams/screen-flow.mmd](diagrams/screen-flow.mmd)
-- Portfolio walkthrough: [docs/walkthrough.md](docs/walkthrough.md)
+## Supporting Docs
 
-## Project Documents
-- Delivery roadmap: [ROADMAP.md](ROADMAP.md)
-- System architecture: [ARCHITECTURE.md](ARCHITECTURE.md)
-- Implementation log: [CHANGELOG.md](CHANGELOG.md)
-- Threat model: [THREAT_MODEL.md](THREAT_MODEL.md)
-- Future detection ideas: [DETECTION_IDEAS.md](DETECTION_IDEAS.md)
+* ROADMAP.md
+* ARCHITECTURE.md
+* THREAT_MODEL.md
+* DETECTION_IDEAS.md
 
-## Validation
-Current validation targets:
+---
 
-- `python -m pytest`
-- `python -m app.cli smoke`
-- `streamlit run app/main.py`
+# Validation
 
-## Screenshot Checklist
-- [ ] Login and role gateway
-- [ ] Reporter submits a new alert
-- [ ] Analyst queue with priorities and filters
-- [ ] Investigation view with enrichment and playbook
-- [ ] Admin dashboard metrics and charts
-- [ ] Incident oversight table
+```bash
+python -m pytest
+python -m app.cli smoke
+streamlit run app/main.py
+```
+
+---
+
+# Future Enhancements
+
+Planned ideas:
+
+* MITRE ATT&CK mapping
+* IOC enrichment integrations
+* Simulated case management
+* Detection rule tuning
+* Expanded RBAC permissions
+* API-backed alert sources
+
+---
+
+# Why This Project Matters
+
+This project reflects the same foundational areas emphasized in junior engineering pathways:
+
+* Programming fundamentals
+* Data and logic modelling
+* APIs and service thinking
+* Debugging and testing
+* System decomposition
+* Secure workflow design
+
+It was built as a practical learning project and as a stepping stone toward software engineering and technical operations roles.
+
+---
+
+## Screenshots
+
+
+<img width="1845" height="918" alt="image" src="https://github.com/user-attachments/assets/7e031f33-b5b5-41b6-b990-24d4ad39d6ae" />
+**Login gateway**
+
+
+<img width="1919" height="907" alt="image" src="https://github.com/user-attachments/assets/dd67d515-bcda-4022-bedf-cab6784f5ca6" />
+**Analyst queue**
+
+
+<img width="1919" height="906" alt="image" src="https://github.com/user-attachments/assets/b275dc24-e6ec-481e-b68b-ac510645e26d" />
+**Investigation view**
+
+
+<img width="1919" height="908" alt="image" src="https://github.com/user-attachments/assets/9d9e72fd-e6de-4a23-aa09-d87f5c6832c9" />
+**Admin dashboard**
+
+---
+
+## Author
+
+Richard Fisher
+GitHub: [https://github.com/richfish85](https://github.com/richfish85)
+
+
