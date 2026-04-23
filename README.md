@@ -85,14 +85,14 @@ Example incident:
 
 ## Implemented
 
-*✅ Role-based workflow simulation
-*✅ SQLite-backed incident and alert data
-*✅ Streamlit UI with three user views
-*✅ Seeded demo data and users
-*✅ Priority scoring engine
-*✅ CLI smoke tests
-*✅ Pytest validation
-*✅ Mermaid architecture diagrams
+* Role-based workflow simulation
+* SQLite-backed incident and alert data
+* Streamlit UI with three user views
+* Seeded demo data and users
+* Priority scoring engine
+* CLI smoke tests
+* Pytest validation
+* Mermaid architecture diagrams
 
 ---
 
@@ -296,19 +296,19 @@ It was built as a practical learning project and as a stepping stone toward soft
 
 
 <img width="1845" height="918" alt="image" src="https://github.com/user-attachments/assets/7e031f33-b5b5-41b6-b990-24d4ad39d6ae" />
-* Login gateway
+**Login gateway**
 
 
 <img width="1919" height="907" alt="image" src="https://github.com/user-attachments/assets/dd67d515-bcda-4022-bedf-cab6784f5ca6" />
-* Analyst queue
+**Analyst queue**
 
 
 <img width="1919" height="906" alt="image" src="https://github.com/user-attachments/assets/b275dc24-e6ec-481e-b68b-ac510645e26d" />
-* Investigation view
+**Investigation view**
 
 
 <img width="1919" height="908" alt="image" src="https://github.com/user-attachments/assets/9d9e72fd-e6de-4a23-aa09-d87f5c6832c9" />
-* Admin dashboard
+**Admin dashboard**
 
 ---
 
