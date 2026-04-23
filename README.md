@@ -1,4 +1,4 @@
-# Lighthouse SOC — Incident Triage Assistant
+# Lighthouse SOC — Incident Triage Simmulator
 
 *A Python-based incident triage simulator demonstrating software engineering, systems design, and security workflow automation.*
 
