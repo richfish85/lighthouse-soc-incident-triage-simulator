@@ -1,6 +1,6 @@
-# Lighthouse SOC — Incident Triage Simmulator
+# Lighthouse SOC — Incident Triage Simulator
 
-*A Python-based incident triage simulator demonstrating software engineering, systems design, and security workflow automation.*
+*A Python-based incident triage simulator demonstrating software engineering, systems design, and security workflow simulation and automation concepts.*
 
 **Built as a learning project to demonstrate software engineering fundamentals relevant to junior technical engineering roles.**
 
@@ -264,10 +264,32 @@ streamlit run app/main.py
 
 ---
 
-# Future Enhancements
+
+# Engineering Principles Demonstrated
+
+This project applies:
+- Modular software design
+- Role-based access concepts
+- Data modelling and persistence
+- Test-driven validation
+- Reproducible CLI workflows
+- Secure-by-design thinking
+
+# Design Tradeoffs
+
+This MVP deliberately uses:
+
+- SQLite over PostgreSQL for portability
+- Streamlit over heavier frontend stacks for rapid prototyping
+- Rule-based scoring over ML for transparency and explainability
+
+#Future Extensions
 
 Planned ideas:
-
+* Audit logging
+* Identity integration (SSO / RBAC expansion)
+* Case management workflow
+* Policy compliance mapping
 * MITRE ATT&CK mapping
 * IOC enrichment integrations
 * Simulated case management
